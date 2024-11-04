@@ -18,6 +18,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::prefix('v1')->group(function () {
-    Route::get('books',[\App\Http\Controllers\BookController::class,'index']);
-    Route::get('books/{id}',[\App\Http\Controllers\BookController::class,'show']);
+    Route::apiResource('books',\App\Http\Controllers\BookController::class)->only(['index','show']);
 });
